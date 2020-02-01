@@ -11,7 +11,7 @@ k_api = keepa.Keepa(ACCESSKEY)
 
 def get_info(items):
     check_basic = ['asin', 'title', 'imagesCSV', 'categories', 'categoryTree', 'brand', 'color', 'size',
-                   'packageLength', 'itemWidth','itemHeight', 'itemWeight', 'packageLength',
+                   'packageLength', 'itemWidth', 'itemHeight', 'itemWeight', 'packageLength',
                    'packageWidth', 'packageHeight', 'packageWeight', 'frequentlyBoughtTogether']
 
     check_date = ['NEW_time', 'NEW', 'SALES_time', 'SALES']
@@ -35,7 +35,7 @@ def get_info(items):
     amazon_pic_size = '_AC_UL320_SR360,360_.jpg'  # 图片大小为360 实物占据320 其余留白
     # 主图获取
     data['pic_url_main'] = data['imagesCSV'].apply(lambda x: amazon_pic_domain + x.split(',')[0] +
-                                                              amazon_pic_size if x else None)
+                                                             amazon_pic_size if x else None)
     # 确定图片数量
     data['pic_num'] = data['imagesCSV'].apply(lambda x: len(x.split(',')) if x else None)
     # 转化为excel可用的格式
@@ -68,7 +68,7 @@ def get_keepa_time(date):
     :param date:
     :return:
     """
-    return int(time.mktime(parse(date).timetuple())/60-21564000)
+    return int(time.mktime(parse(date).timetuple()) / 60 - 21564000)
 
 
 cate_info_com = {
@@ -138,9 +138,8 @@ cate_info_ca = {
 
 
 def get_cate(row_cat=0, domain='US'):
-
     cate_info = k_api.category_lookup(row_cat, domain=domain)
-    pd.DataFrame(cate_info).T.to_excel('./data/categories_'+str(row_cat) + domain + '.xlsx', encoding='utf-8')
+    pd.DataFrame(cate_info).T.to_excel('./data/categories_' + str(row_cat) + domain + '.xlsx', encoding='utf-8')
 
 
 if __name__ == '__main__':

@@ -9,7 +9,6 @@ import sys
 
 
 class Review:
-
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 \
             (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36"
@@ -91,7 +90,7 @@ class Review:
 
             # 商品的评价信息表
             each_review_list = [view_goods, view_name, view_star, view_title, view_date, view_colour, view_size,
-                              view_body, view_useful]
+                                view_body, view_useful]
             print(each_review_list)
             self.review_list.append(each_review_list)
 
@@ -144,7 +143,7 @@ class Review:
                                      columns=['review_goods', 'review_name', 'review_star', 'review_title',
                                               'review_date', 'review_colour', 'review_size', 'review_body',
                                               'review_useful'])
-        view_goods_pd.drop_duplicates(subset=['review_name','review_date','review_body'],inplace=True)
+        view_goods_pd.drop_duplicates(subset=['review_name', 'review_date', 'review_body'], inplace=True)
         aft = datetime.datetime.now().strftime('%m%d%H%M')
         file_name = r'..\data\goods_review\\' + "reviews-" + aft + ".xlsx"
         view_goods_pd.to_excel(file_name, encoding='utf-8', engine='xlsxwriter')
@@ -152,7 +151,6 @@ class Review:
 
 
 if __name__ == '__main__':
-
     data = r"../data/category/Shoe Gaiters_1209_1027.xlsx"
     # 获取指定Excel中的 asin列表的评论  可以结合 bse 榜单进行，获取类目的评论详情
     # Excel 需要包含两列  asin 以及 goods_review_count

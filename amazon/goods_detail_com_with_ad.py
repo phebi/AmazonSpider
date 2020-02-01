@@ -9,24 +9,24 @@ from aip import AipOcr
 
 # User_Agent 库 随机选取作为请求头
 head_user_agent = [
-        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1",
-        "Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11",
-        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1092.0 Safari/536.6",
-        "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6",
-        "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/19.77.34.5 Safari/537.1",
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.9 Safari/536.5",
-        "Mozilla/5.0 (Windows NT 6.0) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.36 Safari/536.5",
-        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1063.0 Safari/536.3",
-        "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1063.0 Safari/536.3",
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1063.0 Safari/536.3",
-        "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1062.0 Safari/536.3",
-        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1062.0 Safari/536.3",
-        "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.1 Safari/536.3",
-        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.1 Safari/536.3",
-        "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.1 Safari/536.3",
-        "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.0 Safari/536.3",
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24",
-        "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1",
+    "Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1092.0 Safari/536.6",
+    "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6",
+    "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/19.77.34.5 Safari/537.1",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.9 Safari/536.5",
+    "Mozilla/5.0 (Windows NT 6.0) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.36 Safari/536.5",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1063.0 Safari/536.3",
+    "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1063.0 Safari/536.3",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1063.0 Safari/536.3",
+    "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1062.0 Safari/536.3",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1062.0 Safari/536.3",
+    "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.1 Safari/536.3",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.1 Safari/536.3",
+    "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.1 Safari/536.3",
+    "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.0 Safari/536.3",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24",
+    "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"
 ]
 
 
@@ -96,7 +96,7 @@ def get_sales(rank, cate="Home & Kitchen"):
         "User-Agent": random.choice(head_user_agent),
     }
     sales_url = "https://amzscout.net/extensions/scoutlite/v1/sales?"
-    full_url = sales_url + "domain=COM&category=" + urllib.parse.quote(cate)+ "&rank=" + str(rank)
+    full_url = sales_url + "domain=COM&category=" + urllib.parse.quote(cate) + "&rank=" + str(rank)
     print(full_url)
     s.headers.update(row_headers)
 
@@ -115,7 +115,7 @@ class GoodDetail:
     # }
 
     # proxies = {
-        # "https": "https://114.239.198.228:9999",
+    # "https": "https://114.239.198.228:9999",
     # }
     # 美国站 初次请求 用来保存请求状态
     url_base = "https://www.amazon.com"
@@ -225,7 +225,7 @@ class GoodDetail:
                 "Host": "www.amazon.com",
                 "Sec-Fetch-Mode": "navigate",
                 "Sec-Fetch-Site": "none",
-                "Sec-Fetch-User": "?1",   # 是否通过键盘鼠标操作操作发出请求
+                "Sec-Fetch-User": "?1",  # 是否通过键盘鼠标操作操作发出请求
                 "Upgrade-Insecure-Requests": "1",
             }
             try:
@@ -241,7 +241,7 @@ class GoodDetail:
             except:
                 pass
             print(url)
-            res = self.s.get(url, timeout=20,)
+            res = self.s.get(url, timeout=20, )
         print(self.s.headers)
         print(res.headers)
         res_row_html = etree.HTML(res.text)
@@ -322,7 +322,7 @@ class GoodDetail:
             print("try again")
             self.begin += 1
             if self.begin >= 3:
-                print('该链接{}访问出错次数超过3次, 请手动尝试添加'.format(url),"可能是不可解析的广告链接")
+                print('该链接{}访问出错次数超过3次, 请手动尝试添加'.format(url), "可能是不可解析的广告链接")
                 return
             self.get_detail(url=url)
 
@@ -332,7 +332,8 @@ class GoodDetail:
 
         # sort_list = []
         if not kinds:
-            kinds = res_html.xpath('//div[@class="a-section a-spacing-none twisterShelf_displaySection"]/span/text()')[:]
+            kinds = res_html.xpath('//div[@class="a-section a-spacing-none twisterShelf_displaySection"]/span/text()')[
+                    :]
 
         # 不同类别、颜色、款式的编号
         # 仅仅能获取到部分可以直接点击得到的ASIN, 如果需要完整的父子ASIN数据可使用keepa API
@@ -458,7 +459,7 @@ class GoodDetail:
                     value = value.replace("\n", '').replace("\t", '').strip()
                     if key != "Customer Reviews":
                         item[key] = value
-                        print(key,"---", value)
+                        print(key, "---", value)
 
         # 图片路径
         try:
@@ -524,7 +525,7 @@ class GoodDetail:
             for each in goods_rank.split('#')[1:]:
                 goods_rank_num, goods_rank_sort = each.split("in", 1)
                 try:
-                    goods_rank_num = int(goods_rank_num.replace(',','').strip())
+                    goods_rank_num = int(goods_rank_num.replace(',', '').strip())
                 except:
                     pass
                 goods_rank_sort = re.sub(weight_str, '', goods_rank_sort)
@@ -538,7 +539,6 @@ class GoodDetail:
             self.rank_list.append(goods_each_ranks)
             print(self.rank_list[-1])
 
-
             try:
                 category_main = list(self.rank_list[-1].keys())[0]
                 rank_main = int(list(self.rank_list[-1].values())[0])
@@ -547,7 +547,8 @@ class GoodDetail:
             # print(category_main, rank_main)
         # 评价数量
         try:
-            goods_review_count = res_html.xpath('//div[@id="averageCustomerReviews"]//span[@id="acrCustomerReviewText"]/text()')[0]
+            goods_review_count = \
+            res_html.xpath('//div[@id="averageCustomerReviews"]//span[@id="acrCustomerReviewText"]/text()')[0]
             goods_review_count = int(goods_review_count.split(" ")[0].replace(",", ""))
         except:
             goods_review_count = 0
@@ -555,7 +556,8 @@ class GoodDetail:
         # 评价星级
         try:
 
-            goods_review_star = res_html.xpath('//div[@id="averageCustomerReviews"]//span[@class="a-icon-alt"]/text()')[0]
+            goods_review_star = res_html.xpath('//div[@id="averageCustomerReviews"]//span[@class="a-icon-alt"]/text()')[
+                0]
             goods_review_star = float(goods_review_star.split(" ")[0])
         except:
             goods_review_star = None
@@ -567,7 +569,7 @@ class GoodDetail:
         try:
             goods_price = res_html.xpath("//span[starts-with(@id,'priceblock')]/text()")[0]
         except:
-            goods_price =None
+            goods_price = None
 
         import json
         try:
@@ -621,7 +623,7 @@ class GoodDetail:
 
                 try:
                     seller_review_str = \
-                    seller_res_html.xpath("//a[@class='a-link-normal feedback-detail-description']/text()")[0]
+                        seller_res_html.xpath("//a[@class='a-link-normal feedback-detail-description']/text()")[0]
                     try:
                         count_patt = re.compile('in the last (.*) months \((.*) ratings\)')
                         a, b = re.search(count_patt, seller_review_str).groups()
@@ -656,12 +658,12 @@ class GoodDetail:
                 # time.sleep(random.random())
                 # print("sales:",sales_est)
             except:
-                print(asin,'查询销量出错')
+                print(asin, '查询销量出错')
                 pass
 
-        each_detail_list = (goods_pic_url,goods_title, asin, brand, ad_plus, goods_price, choose_kind,
+        each_detail_list = (goods_pic_url, goods_title, asin, brand, ad_plus, goods_price, choose_kind,
                             seller, seller_cls, seller_name, seller_months, seller_review_count,
-                            rank_in_hk, date_on_shelf, stockOnHand, goods_review_count,product_dimensions,
+                            rank_in_hk, date_on_shelf, stockOnHand, goods_review_count, product_dimensions,
                             package_dimensions, product_weight, ship_weight, goods_review_star, category_main,
                             rank_main, sales_est, high_fre_words, multi_asin, goods_each_ranks)
         if goods_title:
@@ -677,8 +679,9 @@ class GoodDetail:
                 update_sql = 'update goods_detail set rank_in_HK=(%s), goods_review_count=(%s),goods_review_star=(%s), ' \
                              'category_main=(%s), rank_main=(%s), goods_price=(%s), seller_cls=(%s), sales_est=(%s), high_fre_words=(%s)' \
                              'where asin=(%s)'
-                count = cs.execute(update_sql, (rank_in_hk, goods_review_count, goods_review_star, category_main, rank_main,
-                                                goods_price, seller_cls, sales_est, str(high_fre_words), asin))
+                count = cs.execute(update_sql,
+                                   (rank_in_hk, goods_review_count, goods_review_star, category_main, rank_main,
+                                    goods_price, seller_cls, sales_est, str(high_fre_words), asin))
                 self.conn.commit()
                 print(count, "asin已存在，更新完毕")
                 cs.close()
@@ -693,9 +696,11 @@ class GoodDetail:
                 else:
                     sql_ranks = ""
 
-                count = cs.execute(insert_sql, (goods_pic_url,goods_title, asin, brand, goods_price, seller_cls,
-                             category_main, rank_main, sales_est, rank_in_hk, date_on_shelf, goods_review_count, goods_review_star,
-                            product_dimensions, package_dimensions, product_weight, ship_weight, sql_ranks, str(high_fre_words)))
+                count = cs.execute(insert_sql, (goods_pic_url, goods_title, asin, brand, goods_price, seller_cls,
+                                                category_main, rank_main, sales_est, rank_in_hk, date_on_shelf,
+                                                goods_review_count, goods_review_star,
+                                                product_dimensions, package_dimensions, product_weight, ship_weight,
+                                                sql_ranks, str(high_fre_words)))
 
                 try:
                     self.conn.commit()
@@ -852,7 +857,6 @@ def main(data_file, start=0, end=61):
 
 
 if __name__ == '__main__':
-
     data_file = r"E:\AmazonPycharm\keepa\data\asin_list_1_12101351_Home & Kitchen_0_5000.xlsx"
 
     """

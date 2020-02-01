@@ -117,9 +117,11 @@ class AmazonGoods:
         html = etree.HTML(res_html)
 
         # 自然排名和广告排名
-        con_list = html.xpath('//div[@class="sg-col-4-of-24 sg-col-4-of-12 sg-col-4-of-36 s-result-item sg-col-4-of-28 sg-col-4-of-16 sg-col sg-col-4-of-20 sg-col-4-of-32"]')
+        con_list = html.xpath(
+            '//div[@class="sg-col-4-of-24 sg-col-4-of-12 sg-col-4-of-36 s-result-item sg-col-4-of-28 sg-col-4-of-16 sg-col sg-col-4-of-20 sg-col-4-of-32"]')
         print("共有自然商品：{}个".format(str(len(con_list))))
-        ad_con_list = html.xpath('//div[@class="sg-col-4-of-24 sg-col-4-of-12 sg-col-4-of-36 s-result-item sg-col-4-of-28 sg-col-4-of-16 AdHolder sg-col sg-col-4-of-20 sg-col-4-of-32"]')
+        ad_con_list = html.xpath(
+            '//div[@class="sg-col-4-of-24 sg-col-4-of-12 sg-col-4-of-36 s-result-item sg-col-4-of-28 sg-col-4-of-16 AdHolder sg-col sg-col-4-of-20 sg-col-4-of-32"]')
         all_goods_list = con_list + ad_con_list
 
         for each in all_goods_list:
@@ -180,9 +182,8 @@ class AmazonGoods:
 
 
 def main(key_words, end_page=2):
-
     goods = AmazonGoods()
-    for page in range(1, end_page+1):
+    for page in range(1, end_page + 1):
         if page == 1:
             url = "https://www.amazon.com/s?k=" + urllib.parse.quote(key_words)
             goods.get_goods(url)
@@ -202,7 +203,7 @@ def main(key_words, end_page=2):
     data_path = abs_path + "/data/goods_rank_list/"
     if not os.path.exists(data_path):
         os.makedirs(data_path)
-    file_name = data_path + aft + '_' + key_words +"_with_ad.csv"
+    file_name = data_path + aft + '_' + key_words + "_with_ad.csv"
     goods_pd.to_csv(file_name, encoding='utf-8')
 
 

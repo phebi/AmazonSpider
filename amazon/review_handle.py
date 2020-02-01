@@ -27,7 +27,7 @@ def get_counts(text, *args):
     result_counts = {}
     for word in words_row:
         if word not in words_filter:
-            row_counts[word] = row_counts.get(word, 0)+1
+            row_counts[word] = row_counts.get(word, 0) + 1
     for (key, value) in row_counts.items():
         if value > 2:
             result_counts[key] = value
@@ -85,12 +85,9 @@ def check(file_path):
 
 
 if __name__ == '__main__':
-
     # 评价词频分析 输入为 评价详情文件
     file_path = '../data/goods_review/reviews-12091259.xlsx'
     # main 用来绘制词频分布图
     main(file_path)
     # check 检查关键词所在的句段
     check(file_path)
-
-

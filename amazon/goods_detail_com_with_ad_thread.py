@@ -144,7 +144,7 @@ class GoodDetail:
                 "Host": "www.amazon.com",
                 "Sec-Fetch-Mode": "navigate",
                 "Sec-Fetch-Site": "none",
-                "Sec-Fetch-User": "?1",   # 是否通过键盘鼠标操作操作发出请求
+                "Sec-Fetch-User": "?1",  # 是否通过键盘鼠标操作操作发出请求
                 "Upgrade-Insecure-Requests": "1",
             }
             try:
@@ -457,7 +457,7 @@ class GoodDetail:
         # 评价数量
         try:
             goods_review_count = \
-            res_html.xpath('//div[@id="averageCustomerReviews"]//span[@id="acrCustomerReviewText"]/text()')[0]
+                res_html.xpath('//div[@id="averageCustomerReviews"]//span[@id="acrCustomerReviewText"]/text()')[0]
             goods_review_count = int(goods_review_count.split(" ")[0].replace(",", ""))
         except:
             goods_review_count = 0
@@ -585,10 +585,13 @@ class GoodDetail:
 
         details_pd = pd.DataFrame(goods_detail.detail_list,
                                   columns=['goods_pic_url', 'goods_title', 'asin', 'brand', 'ad_plus', 'goods_price',
-                                             'choose_kind', 'seller', 'seller_cls','sales_est','rank_in_HK', 'date_on_shelf',
-                                           'stockOnHand', 'goods_review_count', 'product_dimensions', 'package_dimensions',
-                                           'product_weight', 'ship_weight', 'goods_review_star', 'category_main', 'rank_main'
-                                           , 'high_fre_words', 'multi_asin','goods_each_ranks'])
+                                           'choose_kind', 'seller', 'seller_cls', 'sales_est', 'rank_in_HK',
+                                           'date_on_shelf',
+                                           'stockOnHand', 'goods_review_count', 'product_dimensions',
+                                           'package_dimensions',
+                                           'product_weight', 'ship_weight', 'goods_review_star', 'category_main',
+                                           'rank_main'
+                                      , 'high_fre_words', 'multi_asin', 'goods_each_ranks'])
 
         aft = datetime.datetime.now().strftime('%m%d%H%M')
 
@@ -700,7 +703,6 @@ def get_sales(rank, cate="Home & Kitchen"):
 
 
 def pic_save(base_code, asin):
-
     import base64
     img_data = base64.b64decode(base_code)
     if not os.path.exists("../data/pic/uo/"):
@@ -710,7 +712,6 @@ def pic_save(base_code, asin):
 
 
 if __name__ == '__main__':
-
     goods_detail = GoodDetail()
     # data_path = r"E:\AmazonPycharm\others\data\hom类目前10000名.xlsx"
     # goods_detail.run(data_path, start=1100, end=1230)

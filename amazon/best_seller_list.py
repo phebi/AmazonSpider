@@ -6,6 +6,7 @@ from aip import AipOcr
 import random
 import os
 
+
 class BSR:
     info_list = []
     headers = {

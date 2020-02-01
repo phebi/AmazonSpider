@@ -20,7 +20,6 @@ class AmazonGoods:
     def __init__(self):
         self.goods_list = []
 
-
     def get_goods(self, url):
 
         res = self.s.get(url, headers=self.headers, proxies=self.proxies, verify=False)
@@ -98,7 +97,9 @@ if __name__ == '__main__':
             time.sleep(random.random())
         # print("page-%d-finish" % page)
         time.sleep(random.random())
-    goods_pd = pd.DataFrame(goods.goods_list, columns=['goods_title', 'goods_url_full', 'price_whole', 'price_fraction', 'ad_plus', 'reviews'])
+    goods_pd = pd.DataFrame(goods.goods_list,
+                            columns=['goods_title', 'goods_url_full', 'price_whole', 'price_fraction', 'ad_plus',
+                                     'reviews'])
     aft = datetime.datetime.now().strftime('%m%d%H%M')
     file_name = data_path + "goods_rank_list/" + key_words + "-" + aft + "_without_ad.csv"
     goods_pd.to_csv(file_name, encoding='utf-8')

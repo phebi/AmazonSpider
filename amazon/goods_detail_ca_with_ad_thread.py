@@ -53,7 +53,7 @@ class GoodDetail:
     pic_headers = {
         "Host": "images-na.ssl-images-amazon.com",
         "Sec-Fetch-Site": "cross-site",  # 这是一个跨域请求
-        "Sec-Fetch-Mode": "no-cors",   # 保证其对应的方法只有HEAD，GET或POST方法 跨域限制  表示允许跨域
+        "Sec-Fetch-Mode": "no-cors",  # 保证其对应的方法只有HEAD，GET或POST方法 跨域限制  表示允许跨域
         "Upgrade-Insecure-Requests": "1",
         "Accept-Encoding": "gzip, deflate, br",
         "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
@@ -344,8 +344,6 @@ class GoodDetail:
                     if key != "Customer Reviews":
                         item[key] = value
 
-
-
         if res_html.xpath("//div[@id='detailBullets_feature_div']/ul"):
             absr = res_html.xpath('string(//div[@id="dpx-amazon-sales-rank_feature_div"]/li)')
             item['Amazon Best Sellers Rank'] = absr
@@ -449,7 +447,7 @@ class GoodDetail:
             goods_ranks = item.get('Best Sellers Rank', None)
             if not goods_ranks:
                 goods_ranks = item.get('Amazon Best Sellers Rank', None)
-                if not goods_ranks :
+                if not goods_ranks:
                     goods_ranks = item.get('Amazon Bestsellers Rank')
 
         category_main = None
@@ -490,7 +488,7 @@ class GoodDetail:
         # 评价数量
         try:
             goods_review_count = \
-            res_html.xpath('//div[@id="averageCustomerReviews"]//span[@id="acrCustomerReviewText"]/text()')[0]
+                res_html.xpath('//div[@id="averageCustomerReviews"]//span[@id="acrCustomerReviewText"]/text()')[0]
             goods_review_count = int(goods_review_count.split(" ")[0].replace(",", ""))
         except:
             goods_review_count = 0
@@ -570,7 +568,7 @@ class GoodDetail:
                         each.start()
                         print("线程：", each.name)
                     except Exception as e:
-                        time.sleep(random.random(2,3))
+                        time.sleep(random.random(2, 3))
                         each.start()
                         print(each, "重试中")
                         print(e)
@@ -680,7 +678,6 @@ def seller_handle(seller):
 
 
 def pic_save(base_code, asin):
-
     import base64
     img_data = base64.b64decode(base_code)
     if not os.path.exists("../data/pic/"):
@@ -690,8 +687,6 @@ def pic_save(base_code, asin):
 
 
 if __name__ == '__main__':
-
     goods_detail = GoodDetail()
     # data_path = r"E:\AmazonPycharm\others\data\hom类目前10000名.xlsx"
     # goods_detail.run(data_path, start=2600, end=2700)
-

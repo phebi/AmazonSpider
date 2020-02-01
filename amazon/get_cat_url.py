@@ -12,7 +12,7 @@ import pymysql
 class BSE:
     headers = {
 
-        'User-Agent':'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0);'
+        'User-Agent': 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0);'
     }
 
     # 添加代理 应添加https生效 实际操作中会用到全局VPN
@@ -147,7 +147,7 @@ class BSE:
         while True:
 
             fir_thread_list = [threading.Thread(target=self.get_fir, args=(self.raw_queue.get())) for i in range(3)
-                        if not self.raw_queue.empty()]
+                               if not self.raw_queue.empty()]
 
             for each in fir_thread_list:
                 each.start()
@@ -156,7 +156,7 @@ class BSE:
             time.sleep(0.5)
 
             sec_thread_list = [threading.Thread(target=self.get_sec, args=(self.fir_queue.get())) for i in range(8)
-                        if not self.fir_queue.empty()]
+                               if not self.fir_queue.empty()]
 
             for each in sec_thread_list:
                 each.start()
@@ -165,7 +165,7 @@ class BSE:
             time.sleep(random.random())
 
             thr_thread_list = [threading.Thread(target=self.get_thr, args=(self.sec_queue.get())) for i in range(20)
-                        if not self.sec_queue.empty()]
+                               if not self.sec_queue.empty()]
 
             for each in thr_thread_list:
                 each.start()
@@ -174,7 +174,7 @@ class BSE:
             time.sleep(random.random())
 
             final_thread_list = [threading.Thread(target=self.get_last, args=(self.thr_queue.get())) for i in range(20)
-                          if not self.thr_queue.empty()]
+                                 if not self.thr_queue.empty()]
 
             for each in final_thread_list:
                 each.start()
@@ -238,11 +238,10 @@ def main(root_url):
     except:
         pass
     pd_last.to_excel('../data/category/' + cate + aft + '_类目简化.xlsx',
-                                     encoding='utf-8', engine='xlsxwriter')
+                     encoding='utf-8', engine='xlsxwriter')
 
 
 if __name__ == '__main__':
-
     # 输入： 根类目的链接
     # 输出： 该类目的best_seller链接，各个层级的链接存放在 data/category/amazon_category_+类目名称的Excel表格中，
     # 输出： 简化版，仅保留最后一个层级的链接文件保存在相同目录下，类目名称+类目简化的Excel表格中。

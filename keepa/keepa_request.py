@@ -30,7 +30,7 @@ def get_keepa_time(date):
     :param date:
     :return:
     """
-    return int(time.mktime(parse(date).timetuple())/60-21564000)
+    return int(time.mktime(parse(date).timetuple()) / 60 - 21564000)
 
 
 cate_info_com = {
@@ -106,10 +106,10 @@ def get_selection(
         review_count=60,
         date_in='2019-1-1',
         date_out='2019-11-15',
-    ):
+):
     queryJson = {
         "current_SALES_gte": rank_in,  # 最高排名
-        "current_SALES_lte":  rank_out,  # 最底排名
+        "current_SALES_lte": rank_out,  # 最底排名
         # "current_COUNT_REVIEWS_gte": 0,  # 最低评价数量
         # "current_COUNT_REVIEWS_lte": review_count,  # 最高评价数量
         "current_NEW_FBA_gte": 2000,  # FBA发货价格 最低20刀
@@ -132,7 +132,7 @@ def get_selection(
         "sort": [["current_SALES", "asc"]],
         # "lastOffersUpdate_gte": 4631500,  # int(time.time()/60-21564000)
         # "lastRatingUpdate_gte": 4615660,
-        "productType": [0, 1, 5],   # 0 所有产品， 1, 可下载非第三方价格数据 5，仅父ASIN
+        "productType": [0, 1, 5],  # 0 所有产品， 1, 可下载非第三方价格数据 5，仅父ASIN
         "perPage": 10000,  # 每一页展示的数据  默认50 返回总数据最大10000
         "page": 0  # 第几页 开始于0
     }
@@ -156,7 +156,8 @@ def get_asin(cate_key='Home & Kitchen',
     print(url)
     rep_data = s.get(url, verify=False)
     print(rep_data.text)
-    file_name = r"data/asin_list_" + str(domain) + "_" + datetime.datetime.now().strftime('%m%d%H%M') + '_' + cate_key + '_' + \
+    file_name = r"data/asin_list_" + str(domain) + "_" + datetime.datetime.now().strftime(
+        '%m%d%H%M') + '_' + cate_key + '_' + \
                 str(rank_in) + '_' + str(rank_out) + '.xlsx'
     data_pd = pd.DataFrame(rep_data.json()['asinList'], columns=['ASIN'])
     data_pd.to_excel(file_name, encoding='utf-8')
@@ -195,7 +196,7 @@ def get_varies(asin):
         for each_para in each_asin.get('attributes'):
             para_list.append(each_para.get('value'))
             para = "-".join(para_list)
-        info_list.append((parent_asin, asin,  para, stock, model))
+        info_list.append((parent_asin, asin, para, stock, model))
     print(info_list)
     return info_list
 
@@ -212,7 +213,6 @@ def get_asin_info(ASIN):
 
 
 def get_stock(asin):
-
     def set_number(each, count=999):
         each.click()
         time.sleep(random.random())
@@ -244,7 +244,8 @@ def get_stock(asin):
         pass
     try:
         # WebDriverWait(driver, 超时时长, 调用频率, 忽略异常).until(可执行方法, 超时时返回的信息)
-        WebDriverWait(driver, 20, 0.5).until(ec.element_to_be_clickable((By.XPATH, "//input[@id='add-to-cart-button']")))
+        WebDriverWait(driver, 20, 0.5).until(
+            ec.element_to_be_clickable((By.XPATH, "//input[@id='add-to-cart-button']")))
         time.sleep(random.random())
         driver.find_element_by_xpath("//input[@id='add-to-cart-button']").click()
         time.sleep(random.uniform(1, 2))
@@ -280,7 +281,8 @@ def get_stock(asin):
         set_number(each, 999)
         time.sleep(random.uniform(2, 3))
         WebDriverWait(driver, 20, 0.5).until_not(
-            ec.element_to_be_clickable((By.XPATH, "//span[@class='a-button a-button-primary a-button-small sc-update-link']")))
+            ec.element_to_be_clickable(
+                (By.XPATH, "//span[@class='a-button a-button-primary a-button-small sc-update-link']")))
         time.sleep(random.random())
         try:
             stock_value = driver.find_element_by_xpath("//input[@name='quantityBox']").get_attribute('value')
@@ -319,5 +321,3 @@ if __name__ == '__main__':
              rank_in=0,
              rank_out=5000,
              domain=1)
-
-
